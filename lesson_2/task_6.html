@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 6. Реализовать функцию с тремя параметрами: 
+        // function mathOperation(arg1, arg2, operation), 
+        // где arg1, arg2 – значения аргументов, operation – строка с названием операции. 
+        // В зависимости от переданного значения операции выполнить 
+        // одну из арифметических операций (использовать функции из пункта 5) 
+        // и вернуть полученное значение (использовать switch).
+        'use strict'
+
+        function f_sum(a, b) {
+            return a + b
+        }
+
+        function f_diffence(a, b) {
+            return a - b
+        }
+
+        function f_composition(a, b) {
+            return a * b
+        }
+
+        function f_division(a, b) {
+            return a / b
+        }
+
+        // let user_operation = prompt('введите операцию: ')
+        let user_operation = '+'
+
+        function mathOperation(arg1, arg2, operation) {
+            switch (operation) {
+                case '/':
+                    return f_division(arg1, arg2)
+                case '*':
+                    return f_composition(arg1, arg2)
+                case '-':
+                    return f_diffence(arg1, arg2)
+                case '+':
+                    return f_sum(arg1, arg2)
+                default:
+                    return 'Неизвестная операция'
+            }
+
+        }
+
+        console.log(mathOperation(12, 6, user_operation))
+    </script>
+</body>
+
+</html>
