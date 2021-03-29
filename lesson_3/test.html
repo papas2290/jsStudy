@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let basket = [
+            ['джинсы', 'футболка', 'шорты'],
+            [2, 12, 4],      // количество
+            [11, 22, 33]    // цена
+        ]
+
+        function countBasketPrice(basket) {
+            let sumBasket = 0
+            for (let i = 0; i < basket.length; i++) {          // проходит 
+                for (let j = 0; j < basket.length; j++) {
+                    sumBasket += basket[1][j] * basket[2][j]
+
+                }
+            }
+            return sumBasket / 3
+        }
+
+
+        console.log(countBasketPrice(basket))
+    </script>
+</body>
+
+</html>
