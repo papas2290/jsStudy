@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        // 2. С этого урока начинаем работать с функционалом интернет-магазина. 
+        // Предположим, есть сущность корзины. 
+        // Нужно реализовать функционал подсчета стоимости корзины 
+        // в зависимости от находящихся в ней товаров.
+
+        // 3. Товары в корзине хранятся в массиве. Задачи:
+        // a) Организовать такой массив для хранения товаров в корзине;
+        // b) Организовать функцию countBasketPrice, которая будет считать стоимость корзины.
+
+        let basket = [
+            ['джинсы', 'футболка', 'шорты', 'куртка', 'шапка', 'сумка'],
+            [1, 2, 3, 4, 5, 6],      // количество
+            [1, 2, 3, 4, 5, 6]    // цена
+        ]
+
+        function countBasketPrice(basket) {
+            let sumBasket = 0
+            for (let i = 0; i < basket.length; i++) {
+                for (let j = 0; j < basket[i].length; j++) {
+                    sumBasket += basket[1][j] * basket[2][j]
+                }
+            }
+            return sumBasket / 3   // понимаю, что это не очень хорошо, цикл делает два лишних прохода,
+            // но не допер как сделать в этой ситуации иначе
+        }
+
+        console.log(countBasketPrice(basket))
+
+    </script>
+</body>
+
+</html>
