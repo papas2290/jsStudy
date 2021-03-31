@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use srtict'
+        /*
+        2.Продолжить работу с интернет-магазином:
+    2.1. В прошлом домашнем задании вы реализовали корзину на базе массивов. 
+    Какими объектами можно заменить их элементы?
+    2.2. Реализуйте такие объекты.
+    2.3. Перенести функционал подсчета корзины на объектно-ориентированную базу.
+        */
+
+        const basket = {
+            typeOfClothing: ['джинсы', 'футболка', 'шорты', 'куртка'],
+            quantity: [3, 1, 1, 5],
+            price: [1, 2, 3, 4],
+            basketValue() {
+                let sumBasket = 0
+                for (let i = 0; i < basket.quantity.length; i++) {
+                    sumBasket += basket.quantity[i] * basket.price[i]
+                }
+                return sumBasket
+            }
+        }
+
+        console.log(basket.basketValue())
+
+
+            // Здесь выводится NaN, за счет того, что свм метод включается в итерацию.
+            // Не додумал как осуществить, не вынося цикл за пределы объекта.
+
+        // const basket = {
+        //     jeans: {
+        //         quantity: 2,
+        //         price: 1
+        //     },
+        //     shirt: {
+        //         quantity: 2,
+        //         price: 5
+        //     },
+        //     jacket: {
+        //         quantity: 4,
+        //         price: 2
+        //     },
+        //     basketValue() {
+        //         let sumBasket = 0
+        //         for (const key in basket) {
+        //             sumBasket += basket[key].price * basket[key].quantity
+        //         } return sumBasket
+
+
+        //     }
+        // }
+
+        // console.log(basket.basketValue())
+
+    </script>
+</body>
+
+</html>
