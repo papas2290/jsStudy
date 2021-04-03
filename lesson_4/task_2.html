@@ -13,26 +13,26 @@
         'use srtict'
         /*
         2.Продолжить работу с интернет-магазином:
-    2.1. В прошлом домашнем задании вы реализовали корзину на базе массивов. 
+    2.1. В прошлом домашнем задании вы реализовали корзину на базе массивов.
     Какими объектами можно заменить их элементы?
     2.2. Реализуйте такие объекты.
     2.3. Перенести функционал подсчета корзины на объектно-ориентированную базу.
         */
 
-        // const basket = {
-        //     typeOfClothing: ['джинсы', 'футболка', 'шорты', 'куртка'],
-        //     quantity: [3, 1, 1, 5],
-        //     price: [1, 2, 3, 4],
-        //     basketValue() {
-        //         let sumBasket = 0
-        //         for (let i = 0; i < basket.quantity.length; i++) {
-        //             sumBasket += basket.quantity[i] * basket.price[i]
-        //         }
-        //         return sumBasket
-        //     }
-        // }
+        const basket = {
+            typeOfClothing: ['джинсы', 'футболка', 'шорты', 'куртка'],
+            quantity: [3, 1, 1, 5],
+            price: [1, 2, 3, 4],
+            basketValue() {
+                let sumBasket = 0
+                for (let i = 0; i < basket.quantity.length; i++) {
+                    sumBasket += basket.quantity[i] * basket.price[i]
+                }
+                return sumBasket
+            }
+        }
 
-        // console.log(basket.basketValue())
+        console.log(basket.basketValue())
 
 
 
@@ -67,28 +67,7 @@
 
         // console.log(basket.basketValue())
 
-        const basket = {
-            goods: [
-                {
-                    product_id: 4,
-                    product_name: 'джинсы',
-                    price: 4000,
-                    quantity: 1
-                },
-                {
-                    product_id: 6,
-                    product_name: 'куртка',
-                    price: 5000,
-                    quantity: 1
-                }
-            ],
-            basketValue() {
-                return this.goods.reduce((totalPrice, goodsItem) => totalPrice + goodsItem.price * goodsItem.quantity, 0)
-            },
 
-        }
-
-        console.log(basket.basketValue())
 
     </script>
 </body>
