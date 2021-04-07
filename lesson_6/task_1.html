@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const catalog = {
+            catalogList: null,
+            goods: [
+                {
+                    product_id: 4,
+                    product_name: 'джинсы',
+                    price: 4000,
+                },
+                {
+                    product_id: 6,
+                    product_name: 'куртка',
+                    price: 5000,
+                }
+            ],
+
+            generation() {
+                return this.goods.reduce((totalGoods, good) => `${totalGoods}  ${good.product_name} ${good.price} <br>`, '')
+            },
+
+            show() {
+                if (this.goods.length) {
+                    this.productCatalog.insertAdjacentHTML('afterBegin', `Каталог <br> ${this.generation()}`)
+                } else {
+                    this.productCatalog.insertAdjacentHTML('afterbegin', 'В каталоге нет товаров.')
+                }
+            },
+
+            init() {
+                let productCatalog = document.createElement('div')
+                productCatalog.className = 'product_catalog'
+                this.productCatalog = document.querySelector('.catalog')
+                this.show()
+            }
+        }
+
+        catalog.init()
+    </script>
+</body>
+
+</html>
