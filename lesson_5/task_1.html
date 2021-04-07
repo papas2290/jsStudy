@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./task_1.css">
+</head>
+
+<body>
+    <script>
+        'use strict'
+        /*
+    1. Создать функцию, генерирующую шахматную доску.
+    При этом можно использовать любые html-теги по своему желанию.
+    Доска должна быть разлинована соответствующим образом,
+    т.е. чередовать черные и белые ячейки.
+    Строки должны нумероваться числами от 1 до 8,
+    столбцы – латинскими буквами A, B, C, D, E, F, G, H.
+    */
+
+        let chess = document.createElement('div')
+        chess.className = 'chess'
+        document.body.insertAdjacentElement('afterbegin', chess)
+
+        function generationChess() {
+
+            let flag = 0
+            for (let i = 1; i <= 8; i++) {
+                for (let j = 1; j <= 8; j++) {
+                    if (j == 1) {
+                        flag = !flag
+                    }
+                    let chess_items = document.createElement('div')
+                    chess_items.className = 'chess_items'
+                    if (flag == 0) {
+                        chess_items.className = 'chess_items black'
+                        flag = 1
+                    } else {
+                        chess_items.className = 'chess_items white'
+                        flag = 0
+                    }
+                    chess.appendChild(chess_items)
+
+
+                }
+            }
+
+        }
+
+        generationChess()
+
+    </script>
+</body>
+
+</html>

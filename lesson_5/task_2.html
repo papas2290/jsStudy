@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict'
+        /*
+         3. Сделать генерацию корзины динамической: верстка корзины не должна находиться в HTML-структуре.
+        Там должен быть только div, в который будет вставляться корзина, сгенерированная на базе JS:
+         3.1. Пустая корзина должна выводить строку «Корзина пуста»;
+         3.2. Наполненная должна выводить «В корзине: n товаров на сумму m рублей».
+        */
+
+        const basket = {
+            goods: [
+                {
+                    product_id: 4,
+                    product_name: 'джинсы',
+                    price: 4000,
+                    quantity: 1
+                },
+                {
+                    product_id: 6,
+                    product_name: 'куртка',
+                    price: 5000,
+                    quantity: 2
+                }
+            ],
+            basketValue() {
+                return this.goods.reduce((totalPrice, goodsItem) => totalPrice + goodsItem.price * goodsItem.quantity, 0)
+            },
+
+            generationBasket() {
+                if (this.goods.length) {
+                    this.cartList.insertAdjacentHTML('beforeend', `В корзине ${this.goods.length} товара(ов) на сумму ${this.basketValue()}`)
+                } else {
+                    this.cartList.insertAdjacentHTML('beforeend', 'Корзина пуста')
+                }
+            },
+
+            init() {
+                let cartList = document.createElement('div')
+                cartList.className = 'cartList'
+                document.body.insertAdjacentElement('afterbegin', cartList)
+                this.cartList = document.querySelector('.cartList')
+                this.generationBasket()
+            }
+        }
+
+        basket.init()
+
+
+
+    </script>
+</body>
+
+</html>
