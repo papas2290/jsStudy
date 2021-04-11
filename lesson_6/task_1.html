@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Каталог</h2>
+    <div class="catalog"></div>
+    <h2>Корзина</h2>
+    <div class="basket"></div>
+    <script>
+        /*
+        *. Сделать так, чтобы товары в каталоге выводились при помощи JS:
+    4.1. Создать массив товаров (сущность Product);
+    4.2. При загрузке страницы на базе данного массива генерировать вывод из него.
+    HTML-код должен содержать только div id=”catalog” без вложенного кода. Весь вид каталога генерируется JS.
+        */
+        'use strict'
+
+        const basket = {
+            basketBlock: null,
+            goods: [
+                {
+                    product_id: 4,
+                    product_name: 'джинсы',
+                    price: 4000,
+                    quantity: 1
+                },
+            ],
+
+            init(basketBlockClass) {
+                this.basketBlock = document.querySelector(`.${basketBlockClass}`)
+                this.render()
+            },
+
+            render() {
+                if (this.getBasketLength() > 0) {
+                    this.generation();
+                } else {
+                    this.generationEmptyBasket();
+                }
+            },
+
+            getBasketLength() {
+                return this.goods.length;
+            },
+
+            generationItem(element) {
+                return `<div>
+                            <h3>${element.product_name}</h3>
+                            <p>${element.price} руб.</p>
+                            <p>${element.quantity} шт.</p>
+                        </div>`
+            },
+
+            generationEmptyBasket() {
+                this.basketBlock.innerHTML = '';
+                this.basketBlock.textContent = 'Корзина пуста.';
+            },
+
+            generation() {
+                this.basketBlock.innerHTML = ''
+                this.goods.forEach(element => {
+                    this.basketBlock.insertAdjacentHTML('beforeend', this.generationItem(element));
+                });
+            },
+
+            addToBasket(element) {
+                if (element) {
+                    this.goods.forEach(findElement => {
+                        if (this.element === this.goods.product_id) {
+                            this.goods.quantity++
+                        }
+                    })
+                }
+            }
+        }
+
+
+
+
+        const catalog = {
+            basket: null,
+            productCatalog: null, // блок каталога
+            goods: [
+                {
+                    product_id: 4,
+                    product_name: 'джинсы',
+                    price: 4000,
+                },
+                {
+                    product_id: 6,
+                    product_name: 'куртка',
+                    price: 5000,
+                }
+            ],
+
+            init(catalogBlock, basket) {
+                this.productCatalog = document.querySelector(`.${catalogBlock}`)
+                this.basket = basket
+                this.generation()
+                this.eventHandler()
+            },
+
+            generation() {
+                if (this.goods.length) {
+                    this.productCatalog.innerHTML = ''
+                    this.goods.forEach(element => {
+                        this.productCatalog.insertAdjacentHTML('beforeend', this.generationItem(element))
+                    })
+                } else { this.productCatalog.insertAdjacentHTML('afterbegin', 'В каталоге нет товаров.') }
+            },
+
+            // генерация ячейки товара
+            generationItem(item) {
+                return `<div class="product">
+                            <h3>${item.product_name}</h3>
+                            <p>${item.price} руб</p>
+                            <button class="addToBasket" data-product_id="${item.product_id}">добавить в корзину</button>
+                        </div>`
+            },
+
+            eventHandler() {
+                this.productCatalog.addEventListener('click', element => this.addToBasket(element))
+            },
+
+            addToBasket(element) {
+                const productId = +element.target.dataset.product_id
+                this.goods.forEach(findProduct => {
+                    if (this.goods.product_id === productId) {
+                        this.cart.addToBasket(productId)
+                    }
+                })
+            }
+        }
+
+        catalog.init('catalog', basket)
+        basket.init('basket')
+
+
+
+    </script>
+</body>
+
+</html>
